@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         超星刷评论脚本
 // @namespace    http://tampermonkey.net/
-// @version      0.1
+// @version      0.2
 // @description  刷评论真烦人！但这个只需要点点就好啦~
 // @author       robert
 // @match        *://*.chaoxing.com/*
@@ -18,7 +18,7 @@
     *作用网页是点击「讨论」后的「讨论列表」网页。
 */
 
-var fillText =
+let fillText =
     ["凯恩斯由就业不足引到有效需求不足,再引到投资不足与消费不足乃至货币不足,构成了被人们称之为“萧条经济学体系”的经济学理论体系。",
         "面对资本主义制度下具有严重威胁性的失业问题,凯恩斯把如何解决失业问题作为他写《就业、利息和货币通论》的目的。",
         "在资本主义出现有效需求不足、经济萧条和严重失业的现象时,凯恩斯主张采取积极财政政策,直接增加政府的支出和公共投资,以刺激经济增长、解决失业问题。",
@@ -34,12 +34,12 @@ var fillText =
         "必须转换到另一个方面,即从宏观的、总量的角度去考察当时发生的经济问题。",
         "他认为,重要的应是研究引起总产量与总就业量产生变动的各种决定力量。"];//存放填充文本的数组，建议进行修改
 
-var m = -1;
-var n = fillText.length + 1;
-var randomIndex = Math.floor(Math.random() * (n - m + 1)) + m;//生成一个在 m 和 n 之间的随机数
-document.getElementById("c_title").value = fillText[randomIndex];//在标题填充内容
+let m = -1;
+let n = fillText.length + 1;
+let randomIndex = Math.floor(Math.random() * (n - m + 1)) + m;//生成一个在 m 和 n 之间的随机数
+$('#c_title').val(fillText[randomIndex]); //在标题填充内容  
 randomIndex = Math.floor(Math.random() * (n - m + 1)) + m;//生成一个在 m 和 n 之间的随机数
-document.getElementById("textarea").value = fillText[randomIndex]; //在填充详细内容
+$('#textarea').val(fillText[randomIndex]);//在填充详细内容
 document.querySelector('.qdBtn.fr').click();//模拟点击提交按钮
 //需手动点击 alert 弹窗的确定按钮，这部分目前没做
 })();
